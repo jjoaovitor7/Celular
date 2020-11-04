@@ -1,15 +1,16 @@
 <?php
 class Celular {
-    private $cor;
 
+    // atributos
+    private $cor;
     private $marca;
     private $modelo;
-
     private $qtdeMemoriaArmazenamento;
     private $qtdeMemoriaRAM;
-
     private $sistemaOperacional;
 
+
+    // setters
     public function setCor($cor){
         $this->$cor = $cor;
     }
@@ -34,4 +35,29 @@ class Celular {
         $this->sistemaOperacional = $so;
     }
 
+
+    // getters
+    public function getCor(){
+        return $this->cor;
+    }
+
+    public function getMarca(){
+        return $this->marca;
+    }
+
+    public function getModelo(){
+        return $this->modelo;
+    }
+
+    public function getQtdeMemoriaArmazenamento(){
+        return $this->qtdeMemoriaArmazenamento;
+    }
+
+    public function getQtdeMemoriaRAM(){
+        return $this->qtdeMemoriaRAM;
+    }
+
+    public function getSO(){
+        return $this->sistemaOperacional;
+    }
 }
