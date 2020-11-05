@@ -14,7 +14,7 @@
   $ cd Celular
   
   // Rodar o script
-  $ php main.php
+  $ php src/main.php
 ```
 
 ---

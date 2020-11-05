@@ -1,6 +1,6 @@
 <?php
-require_once(getcwd() . '/Celular.php');
-require_once(getcwd() . '/clearScreen.php');
+require_once(__DIR__ . '/Celular.php');
+require_once(__DIR__ . '/clearScreen.php');
 
 $celular = new Celular();
 

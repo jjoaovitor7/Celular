@@ -1,5 +1,5 @@
 <?php
-require_once(getcwd() . '/clearScreen.php');
+require_once(__DIR__ . '/clearScreen.php');
 
 class Celular
 {
