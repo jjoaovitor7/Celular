@@ -57,13 +57,26 @@ if (strtok($ligarCelular, "\n") == "S") {
                 echo "Número do Contato: ";
                 $numContato = fgets(STDIN);
 
-                $contatoAux = array("nome"=>strtok($nomeContato, "\n"), "numero"=>strtok($numContato, "\n"));
+                $contatoAux = array("id" => $contato->id, "nome"=>strtok($nomeContato, "\n"), "numero"=>strtok($numContato, "\n"));
                 $contato->addContato($contatoAux);
+                $contato->id += 1;
                 $celular->showOptionsHome();
             }
             
             if($contatosOptions == 2){
                 echo $contato->getContato();
+                echo "\n";
+                $celular->showOptionsHome();
+            }
+
+            if($contatosOptions == 3){
+                echo "ID do Contato: ";
+                $idContato = fgets(STDIN);
+                echo "Contato Selecionado: ";
+                echo $contato->selectNomeContato(intval($idContato));
+                echo "\n";
+                echo "Número: ";
+                echo $contato->selectNumeroContato(intval($idContato));
                 echo "\n";
                 $celular->showOptionsHome();
             }

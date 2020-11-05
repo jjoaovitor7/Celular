@@ -102,6 +102,7 @@ class Celular
         echo "Contatos";
         echo "\n1-Adicionar Contato";
         echo "\n2-Ver Contatos";
+        echo "\n3-Selecionar Contato";
         echo "\n:";
     }
 }
