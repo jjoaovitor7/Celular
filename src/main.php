@@ -16,6 +16,7 @@ echo "Modelo: ";
 $celular->setModelo(fgets(STDIN));
 echo "Quantidade de Memória de Armazenamento: ";
 $celular->setQtdeMemoriaArmazenamento(fgets(STDIN));
+
 echo "Quantidade de Memória RAM:"
 ."\n1-2GB"
 ."\n2-4GB"
