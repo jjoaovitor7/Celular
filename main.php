@@ -83,7 +83,9 @@ class Celular
         sleep(2);
         clearScreen();
         echo "Ligando...";
-        echo "\nCelular ligado!";
+        sleep(2);
+        echo "\nCelular ligado!\n";
+        sleep(2);
     }
 }
 
