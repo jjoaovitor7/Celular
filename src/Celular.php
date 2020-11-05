@@ -90,11 +90,18 @@ class Celular
         sleep(2);
     }
 
-    public function showOptions()
+    public function showOptionsHome()
     {
-        echo "Home";
+        echo "\nHome";
         echo "\n1-Home";
         echo "\n2-Contatos";
+        echo "\n:";
+    }
+
+    public function showOptionsContatos(){
+        echo "Contatos";
+        echo "\n1-Adicionar Contato";
+        echo "\n2-Ver Contatos";
         echo "\n:";
     }
 }
