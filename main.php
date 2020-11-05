@@ -87,6 +87,13 @@ class Celular
         echo "\nCelular ligado!\n";
         sleep(2);
     }
+
+    public function showOptions(){
+        echo "Home";
+        echo "\n1-Home";
+        echo "\n2-Contatos";
+        echo "\n:";
+    }
 }
 
 function clearScreen()
@@ -100,6 +107,7 @@ function clearScreen()
 
 $celular = new Celular();
 
+clearScreen();
 echo "---Cadastro de Celular\n";
 echo "Cor: ";
 $celular->setCor(fgets(STDIN));
@@ -128,8 +136,17 @@ echo "|Sistema Operacional: {$celular->getSO()}";
 
 echo "\nLigar o celular? <S/n>\n";
 $ligarCelular = fgets(STDIN);
-if ($ligarCelular == "S\n"){
+if ($ligarCelular == "S\n") {
     $celular->ligar();
+    $celular->showOptions();
+    $isTrue = true;
+    while ($isTrue) {
+        $showOptionsCond = fgets(STDIN);
+        if ($showOptionsCond == 1) {
+            clearScreen();
+            $celular->showOptions();
+        }
+    }
 }
 else {
     echo "O celular não será ligado.";
