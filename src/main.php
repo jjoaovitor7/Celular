@@ -34,8 +34,8 @@ echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}";
 echo "|Sistema Operacional: {$celular->getSO()}";
 
 echo "\nLigar o celular? <S/n>\n";
-$ligarCelular = "S\n";
-if ($ligarCelular == "S\n") {
+$ligarCelular = fgets(STDIN);
+if (strtok($ligarCelular, "\n") == "S") {
     $celular->ligar();
     $celular->showOptionsHome();
     $isTrue = true;
