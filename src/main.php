@@ -8,14 +8,42 @@ $contato = new Contato();
 
 clearScreen();
 echo "---Cadastro de Celular\n";
+
 echo "Cor: ";
 $celular->setCor(fgets(STDIN));
+
 echo "Marca: ";
 $celular->setMarca(fgets(STDIN));
+
 echo "Modelo: ";
 $celular->setModelo(fgets(STDIN));
-echo "Quantidade de Memória de Armazenamento: ";
-$celular->setQtdeMemoriaArmazenamento(fgets(STDIN));
+
+echo "Quantidade de Memória de Armazenamento: "
+."\n1-16GB"
+."\n2-32GB"
+."\n3-64GB"
+."\n4-128GB"
+."\n5-256GB"
+."\n:";
+$qtdeArmazenamento = fgets(STDIN);
+if ($qtdeArmazenamento == 1){
+    $celular->setQtdeMemoriaArmazenamento("16GB");
+}
+else if($qtdeArmazenamento == 2){
+    $celular->setQtdeMemoriaArmazenamento("32GB");
+}
+else if($qtdeArmazenamento == 3){
+    $celular->setQtdeMemoriaArmazenamento("64GB");
+}
+else if($qtdeArmazenamento == 4){
+    $celular->setQtdeMemoriaArmazenamento("128GB");
+}
+else if($qtdeArmazenamento == 5){
+    $celular->setQtdeMemoriaArmazenamento("256GB");
+}
+else {
+    $celular->setQtdeMemoriaArmazenamento("16GB");
+}
 
 echo "Quantidade de Memória RAM:"
 ."\n1-2GB"
@@ -47,7 +75,7 @@ echo "\n ------------------";
 echo "\n|Cor: {$celular->getCor()}";
 echo "|Marca: {$celular->getMarca()}";
 echo "|Modelo: {$celular->getModelo()}";
-echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}";
+echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}\n";
 echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
 echo "|Sistema Operacional: {$celular->getSO()}";
 
