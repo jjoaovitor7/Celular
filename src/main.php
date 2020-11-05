@@ -9,8 +9,28 @@ $contato = new Contato();
 clearScreen();
 echo "---Cadastro de Celular\n";
 
-echo "Cor: ";
-$celular->setCor(fgets(STDIN));
+echo "Cor: "
+."\n1-Preto"
+."\n2-Branco"
+."\n3-Dourado"
+."\n4-Outra"
+."\n:";
+$corCelular = fgets(STDIN);
+if($corCelular == 1){
+    $celular->setCor("Preto");
+}
+else if($corCelular == 2){
+    $celular->setCor("Branco");
+}
+else if($corCelular == 3){
+    $celular->setCor("Dourado");
+}
+else if($corCelular == 4){
+    $celular->setCor(fgets(STDIN));
+}
+else {
+    $celular->setCor("Preto");
+}
 
 echo "Marca: ";
 $celular->setMarca(fgets(STDIN));
@@ -72,7 +92,7 @@ clearScreen();
 echo "\n ------------------";
 echo "\n|Celular cadastrado|";
 echo "\n ------------------";
-echo "\n|Cor: {$celular->getCor()}";
+echo "\n|Cor: {$celular->getCor()}\n";
 echo "|Marca: {$celular->getMarca()}";
 echo "|Modelo: {$celular->getModelo()}";
 echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}\n";
