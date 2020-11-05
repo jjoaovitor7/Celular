@@ -16,8 +16,25 @@ echo "Modelo: ";
 $celular->setModelo(fgets(STDIN));
 echo "Quantidade de Memória de Armazenamento: ";
 $celular->setQtdeMemoriaArmazenamento(fgets(STDIN));
-echo "Quantidade de Memória RAM: ";
-$celular->setQtdeMemoriaRAM(fgets(STDIN));
+echo "Quantidade de Memória RAM:"
+."\n1-2GB"
+."\n2-4GB"
+."\n3-8GB"
+."\n:";
+$qtdeRAM = fgets(STDIN);
+if ($qtdeRAM == 1){
+    $celular->setQtdeMemoriaRAM("2GB");
+}
+else if ($qtdeRAM == 2){
+    $celular->setQtdeMemoriaRAM("4GB");
+}
+else if ($qtdeRAM == 3){
+    $celular->setQtdeMemoriaRAM("8GB");
+}
+else {
+    $celular->setQtdeMemoriaRAM("2GB");
+}
+
 echo "Sistema Operacional: ";
 $celular->setSO(fgets(STDIN));
 
@@ -30,7 +47,7 @@ echo "\n|Cor: {$celular->getCor()}";
 echo "|Marca: {$celular->getMarca()}";
 echo "|Modelo: {$celular->getModelo()}";
 echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}";
-echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}";
+echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
 echo "|Sistema Operacional: {$celular->getSO()}";
 
 echo "\nLigar o celular? <S/n>\n";
@@ -89,6 +106,6 @@ if (strtok($ligarCelular, "\n") == "S") {
         }
     }
 } else {
-    echo "O celular não será ligado.";
+    echo "O celular não será ligado.\n";
 }
 ?>
