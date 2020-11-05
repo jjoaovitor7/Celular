@@ -7,6 +7,10 @@ class Contato {
         array_push($this->contatosList, $contato);
     }
 
+    public function getContatoArray(){
+        return $this->contatosList;
+    }
+
     public function getContato(){
         return json_encode($this->contatosList);
     }
