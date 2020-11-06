@@ -26,5 +26,9 @@ class Contato {
     public function enviarMensagem($index, $msg){
         $this->contatosList[$index]["message"] = $msg;
     }
+
+    public function deletarContato($index){
+        unset($this->contatosList[$index]);
+    }
 }
 ?>

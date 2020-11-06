@@ -101,7 +101,6 @@ echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
 echo "|Sistema Operacional: {$celular->getSO()}";
 
 echo "\nLigar o celular? <S/n>\n";
-
 $ligarCelular = fgets(STDIN);
 if (strtok($ligarCelular, "\n") == "S") {
     $celular->ligar();
@@ -148,6 +147,20 @@ if (strtok($ligarCelular, "\n") == "S") {
                     echo "Número: ";
                     echo $contato->selectNumeroContato(intval($idContato));
                     echo "\n";
+                    $celular->showOptionsHome();
+                }
+                else {
+                    echo "Contato não existe!";
+                    $celular->showOptionsHome();
+                }
+            }
+
+            if($contatosOptions == 4){
+                echo "ID do Contato: ";
+                $idContato = fgets(STDIN);
+                if(array_key_exists(intval($idContato), $contato->getContatoArray())){
+                    $contato->deletarContato(intval($idContato));
+                    echo "Contato deletado!\n";
                     $celular->showOptionsHome();
                 }
                 else {
