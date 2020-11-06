@@ -95,6 +95,7 @@ class Celular
         echo "\nHome";
         echo "\n1-Home";
         echo "\n2-Contatos";
+        echo "\n3-Enviar Mensagem";
         echo "\n:";
     }
 

@@ -22,5 +22,9 @@ class Contato {
     public function selectNumeroContato($index){
         return json_encode($this->contatosList[$index]["numero"]);
     }
+
+    public function enviarMensagem($index, $msg){
+        $this->contatosList[$index]["message"] = $msg;
+    }
 }
 ?>

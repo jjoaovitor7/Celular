@@ -7,6 +7,7 @@ $celular = new Celular();
 $contato = new Contato();
 
 clearScreen();
+
 echo "---Cadastro de Celular\n";
 
 echo "Cor: "
@@ -100,10 +101,12 @@ echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
 echo "|Sistema Operacional: {$celular->getSO()}";
 
 echo "\nLigar o celular? <S/n>\n";
+
 $ligarCelular = fgets(STDIN);
 if (strtok($ligarCelular, "\n") == "S") {
     $celular->ligar();
     $celular->showOptionsHome();
+
     $isTrue = true;
     while ($isTrue) {
         $showOptionsCond = fgets(STDIN);
@@ -151,6 +154,21 @@ if (strtok($ligarCelular, "\n") == "S") {
                     echo "Contato não existe!";
                     $celular->showOptionsHome();
                 }
+            }
+        }
+
+        if($showOptionsCond == 3){
+            echo "Digite sua mensagem: ";
+            $msg = fgets(STDIN);
+            echo "Digite o ID do usuário para quem quer enviar: ";
+            $idDestinatario = fgets(STDIN);
+            if(array_key_exists(intval($idDestinatario), $contato->getContatoArray())){
+                $contato->enviarMensagem(strtok($idDestinatario, "\n"), strtok($msg, "\n"));
+                $celular->showOptionsHome();
+            }
+            else {
+                echo "Você não tem esse contato adicionado.";
+                $celular->showOptionsHome();
             }
         }
     }
