@@ -90,12 +90,26 @@ class Celular
         sleep(2);
     }
 
+    public function desligar()
+    {
+        clearScreen();
+        echo "Desligando.";
+        sleep(2);
+        clearScreen();
+        echo "Desligando..";
+        sleep(2);
+        clearScreen();
+        echo "Desligando...";
+        sleep(2);
+    }
+
     public function showOptionsHome()
     {
         echo "\nHome";
         echo "\n1-Home";
         echo "\n2-Contatos";
         echo "\n3-Enviar Mensagem";
+        echo "\n4-Desligar";
         echo "\n:";
     }
 

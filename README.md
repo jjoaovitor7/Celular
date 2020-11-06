@@ -18,3 +18,11 @@
 ```
 
 ---
+
+## :hammer: Como rodar os testes?
+Na raiz do projeto, executar o comando:
+```bash
+phpunit tests
+```
+
+---

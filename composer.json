@@ -1,0 +1,12 @@
+{
+    "name": "jjoaovitor7/celular",
+    "require-dev": {
+        "phpunit/phpunit": "8.5.2"
+    },
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "jj\\": "src"
+        }
+    }
+}

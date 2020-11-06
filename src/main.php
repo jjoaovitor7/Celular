@@ -184,6 +184,13 @@ if (strtok($ligarCelular, "\n") == "S") {
                 $celular->showOptionsHome();
             }
         }
+
+        if ($showOptionsCond == 4){
+            $celular->desligar();
+            echo "\n";
+            $isTrue = false;
+            break;
+        }
     }
 } else {
     echo "O celular não será ligado.\n";
