@@ -1,9 +1,6 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
-
-require_once(getcwd()."/src/Contato.php");
-
+require_once(getcwd() . "/src/Contato.php");
 
 final class ContatoTest extends TestCase
 {
@@ -27,3 +24,4 @@ final class ContatoTest extends TestCase
         $this->assertEquals(0, intval(count($contato->getContatoArray())));
     }
 }
+?>
