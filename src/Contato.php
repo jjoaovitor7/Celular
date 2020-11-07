@@ -3,31 +3,38 @@ class Contato {
     private $contatosList = array();
     public $id = 0;
 
-    public function addContato($contato) {
+    public function addContato($contato)
+    {
         array_push($this->contatosList, $contato);
     }
 
-    public function getContatoArray(){
+    public function getContatoArray()
+    {
         return $this->contatosList;
     }
 
-    public function getContato(){
+    public function getContato()
+    {
         return json_encode($this->contatosList);
     }
 
-    public function selectNomeContato($index){
+    public function selectNomeContato($index)
+    {
         return json_encode($this->contatosList[$index]["nome"]);
     }
 
-    public function selectNumeroContato($index){
+    public function selectNumeroContato($index)
+    {
         return json_encode($this->contatosList[$index]["numero"]);
     }
 
-    public function enviarMensagem($index, $msg){
+    public function enviarMensagem($index, $msg)
+    {
         $this->contatosList[$index]["message"] = $msg;
     }
 
-    public function deletarContato($index){
+    public function deletarContato($index)
+    {
         unset($this->contatosList[$index]);
     }
 }

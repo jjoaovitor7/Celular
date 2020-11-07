@@ -20,12 +20,7 @@ clearScreen();
 echo " ------------------";
 echo "\n|Celular cadastrado|";
 echo "\n ------------------";
-echo "\n|Cor: {$celular->getCor()}\n";
-echo "|Marca: {$celular->getMarca()}";
-echo "|Modelo: {$celular->getModelo()}";
-echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}\n";
-echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
-echo "|Sistema Operacional: {$celular->getSO()}";
+$celular->getInfo($celular);
 
 echo "\nLigar o celular? <S/n>\n";
 $ligarCelular = fgets(STDIN);
@@ -113,6 +108,17 @@ if (strtok($ligarCelular, "\n") == "S") {
         }
 
         if ($showOptionsCond == 4){
+            clearScreen();
+            $celular->showOptionsConfig();
+            $configOptions = fgets(STDIN);
+            if($configOptions == 1){
+                clearScreen();
+                $celular->getInfo($celular);
+                $celular->showOptionsHome();
+            }
+        }
+
+        if ($showOptionsCond == 5){
             $celular->desligar();
             echo "\n";
             $isTrue = false;

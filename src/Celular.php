@@ -75,6 +75,15 @@ class Celular
         return $this->sistemaOperacional;
     }
 
+    public function getInfo($celular){
+        echo "\n|Cor: {$celular->getCor()}\n";
+        echo "|Marca: {$celular->getMarca()}";
+        echo "|Modelo: {$celular->getModelo()}";
+        echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}\n";
+        echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
+        echo "|Sistema Operacional: {$celular->getSO()}";
+    }
+
     public function ligar()
     {
         clearScreen();
@@ -109,16 +118,25 @@ class Celular
         echo "\n1-Home";
         echo "\n2-Contatos";
         echo "\n3-Enviar Mensagem";
-        echo "\n4-Desligar";
+        echo "\n4-Configurações";
+        echo "\n5-Desligar";
         echo "\n:";
     }
 
-    public function showOptionsContatos(){
+    public function showOptionsContatos()
+    {
         echo "Contatos";
         echo "\n1-Adicionar Contato";
         echo "\n2-Ver Contatos";
         echo "\n3-Selecionar Contato";
         echo "\n4-Deletar Contato";
+        echo "\n:";
+    }
+
+    public function showOptionsConfig()
+    {
+        echo "Configurações";
+        echo "\n1-Sobre";
         echo "\n:";
     }
 }
