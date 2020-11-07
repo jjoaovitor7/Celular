@@ -20,9 +20,10 @@
 ---
 
 ## :hammer: Como rodar os testes?
-Na raiz do projeto, executar o comando:
+Na raiz do projeto, executar os comandos:
 ```bash
-phpunit tests
+$ composer install
+$ ./vendor/bin/phpunit
 ```
 
 ---
