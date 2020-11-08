@@ -1,5 +1,5 @@
 <?php
-function addContato($contato)
+function optionAddContato($contato)
 {
     echo "Nome do Contato: ";
     $nomeContato = fgets(STDIN);
@@ -11,7 +11,7 @@ function addContato($contato)
     $contato->id += 1;
 }
 
-function selectContato($celular, $contato)
+function optionSelectContato($celular, $contato)
 {
     echo "ID do Contato: ";
     $idContato = fgets(STDIN);
@@ -29,12 +29,12 @@ function selectContato($celular, $contato)
     }
 }
 
-function deleteContato($celular, $contato)
+function optionDeleteContato($celular, $contato)
 {
     echo "ID do Contato: ";
     $idContato = fgets(STDIN);
     if (array_key_exists(intval($idContato), $contato->getContatoArray())) {
-        $contato->deletarContato(intval($idContato));
+        $contato->deleteContato(intval($idContato));
         echo "Contato deletado!\n";
         $celular->showOptionsHome();
     } else {

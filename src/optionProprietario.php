@@ -1,6 +1,4 @@
 <?php
-require_once(__DIR__ . '/Celular.php');
-
 function optionProprietario($celular, $status, $configOptions){
     if ($configOptions == 1)
     {

@@ -33,7 +33,7 @@ class Contato {
         $this->contatosList[$index]["message"] = $msg;
     }
 
-    public function deletarContato($index)
+    public function deleteContato($index)
     {
         unset($this->contatosList[$index]);
     }

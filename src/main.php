@@ -5,6 +5,7 @@ require_once(__DIR__ . '/Contato.php');
 require_once(__DIR__ . '/requests.php');
 require_once(__DIR__ . '/optionProprietario.php');
 require_once(__DIR__ . '/ContatoFunctions.php');
+require_once(__DIR__ . '/enviarMensagem.php');
 
 $celular = new Celular();
 $contato = new Contato();
@@ -54,7 +55,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
             if ($contatosOptions == 1)
             {
                 clearScreen();
-                addContato($contato);
+                optionAddContato($contato);
                 $celular->showOptionsHome();
             }
             
@@ -67,12 +68,12 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
 
             else if ($contatosOptions == 3)
             {
-                selectContato($celular, $contato);
+                optionSelectContato($celular, $contato);
             }
 
             else if ($contatosOptions == 4)
             {
-                deleteContato($celular, $contato);
+                optionDeleteContato($celular, $contato);
             }
             else {
                 echo "Opção não encontrada.\n";
@@ -84,19 +85,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
         // Enviar mensagem
         else if ($showOptionsCond == 3)
         {
-            echo "Digite sua mensagem: ";
-            $msg = fgets(STDIN);
-            echo "Digite o ID do usuário para quem quer enviar: ";
-            $idDestinatario = fgets(STDIN);
-            if (array_key_exists(intval($idDestinatario), $contato->getContatoArray()))
-            {
-                $contato->enviarMensagem(strtok($idDestinatario, "\n"), strtok($msg, "\n"));
-                $celular->showOptionsHome();
-            }
-            else {
-                echo "Você não tem esse contato adicionado.";
-                $celular->showOptionsHome();
-            }
+            enviarMensagem($celular, $contato);
         }
 
 
