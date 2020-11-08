@@ -4,9 +4,7 @@ require_once(__DIR__ . '/clearScreen.php');
 require_once(__DIR__ . '/Contato.php');
 require_once(__DIR__ . '/requests.php');
 require_once(__DIR__ . '/optionProprietario.php');
-require_once(__DIR__ . '/selectContato.php');
-require_once(__DIR__ . '/deleteContato.php');
-require_once(__DIR__ . '/addContato.php');
+require_once(__DIR__ . '/ContatoFunctions.php');
 
 $celular = new Celular();
 $contato = new Contato();
@@ -28,7 +26,7 @@ $celular->getInfo($celular);
 
 echo "\nLigar o celular? <S/n>\n";
 $ligarCelular = fgets(STDIN);
-if (strtok($ligarCelular, "\n") == "S")
+if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
 {
     $celular->ligar();
     $celular->showOptionsHome();
