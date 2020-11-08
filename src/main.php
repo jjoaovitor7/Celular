@@ -6,6 +6,7 @@ require_once(__DIR__ . '/requests.php');
 require_once(__DIR__ . '/optionProprietario.php');
 require_once(__DIR__ . '/selectContato.php');
 require_once(__DIR__ . '/deleteContato.php');
+require_once(__DIR__ . '/addContato.php');
 
 $celular = new Celular();
 $contato = new Contato();
@@ -50,14 +51,7 @@ if (strtok($ligarCelular, "\n") == "S")
             if ($contatosOptions == 1)
             {
                 clearScreen();
-                echo "Nome do Contato: ";
-                $nomeContato = fgets(STDIN);
-                echo "Número do Contato: ";
-                $numContato = fgets(STDIN);
-
-                $contatoAux = array("id" => $contato->id, "nome"=>strtok($nomeContato, "\n"), "numero"=>strtok($numContato, "\n"));
-                $contato->addContato($contatoAux);
-                $contato->id += 1;
+                addContato($contato);
                 $celular->showOptionsHome();
             }
             
