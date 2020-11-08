@@ -5,6 +5,7 @@ require_once(__DIR__ . '/Contato.php');
 require_once(__DIR__ . '/requests.php');
 require_once(__DIR__ . '/optionProprietario.php');
 require_once(__DIR__ . '/selectContato.php');
+require_once(__DIR__ . '/deleteContato.php');
 
 $celular = new Celular();
 $contato = new Contato();
@@ -74,18 +75,7 @@ if (strtok($ligarCelular, "\n") == "S")
 
             if ($contatosOptions == 4)
             {
-                echo "ID do Contato: ";
-                $idContato = fgets(STDIN);
-                if (array_key_exists(intval($idContato), $contato->getContatoArray()))
-                {
-                    $contato->deletarContato(intval($idContato));
-                    echo "Contato deletado!\n";
-                    $celular->showOptionsHome();
-                }
-                else {
-                    echo "Contato não existe!";
-                    $celular->showOptionsHome();
-                }
+                deleteContato($celular, $contato);
             }
         }
 
