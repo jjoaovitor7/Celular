@@ -35,12 +35,17 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
     while ($isTrue)
     {
         $showOptionsCond = fgets(STDIN);
+
+
+        // Home
         if ($showOptionsCond == 1)
         {
             clearScreen();
             $celular->showOptionsHome();
         }
 
+
+        // Contatos
         else if ($showOptionsCond == 2)
         {
             clearScreen();
@@ -53,24 +58,30 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
                 $celular->showOptionsHome();
             }
             
-            if ($contatosOptions == 2)
+            else if ($contatosOptions == 2)
             {
                 echo $contato->getContato();
                 echo "\n";
                 $celular->showOptionsHome();
             }
 
-            if ($contatosOptions == 3)
+            else if ($contatosOptions == 3)
             {
                 selectContato($celular, $contato);
             }
 
-            if ($contatosOptions == 4)
+            else if ($contatosOptions == 4)
             {
                 deleteContato($celular, $contato);
             }
+            else {
+                echo "Opção não encontrada.\n";
+                $celular->showOptionsHome();
+            }
         }
 
+
+        // Enviar mensagem
         else if ($showOptionsCond == 3)
         {
             echo "Digite sua mensagem: ";
@@ -88,6 +99,8 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
             }
         }
 
+
+        // Configurações
         else if ($showOptionsCond == 4)
         {
             clearScreen();
@@ -96,9 +109,15 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
                 $celular->showOptionsConfig();
                 $configOptions = fgets(STDIN);
                 optionProprietario($celular, false, $configOptions);
+
+                if (intval($configOptions) <= 0 ||intval($configOptions) >= 3 || gettype(intval($configOptions)) != "integer"){
+                    echo "Opção não encontrada.\n";
+                    $celular->showOptionsHome();
+                }
             } else {
                 $celular->showOptionsConfigWithProprietario();
                 $configOptions = fgets(STDIN);
+        
                 optionProprietario($celular, true, $configOptions);
                 if ($configOptions == 3)
                 {
@@ -108,9 +127,16 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
                     $celular->showOptionsHome();
                 }
 
+                if (intval($configOptions) <= 0 ||intval($configOptions) >= 4 || gettype(intval($configOptions)) != "integer"){
+                    echo "Opção não encontrada.\n";
+                    $celular->showOptionsHome();
+                }
+
             }
         }
 
+
+        // Desligar
         else if ($showOptionsCond == 5)
         {
             $celular->desligar();
