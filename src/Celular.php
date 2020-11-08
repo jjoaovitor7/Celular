@@ -10,6 +10,8 @@ class Celular
     private $qtdeMemoriaArmazenamento = null;
     private $qtdeMemoriaRAM = null;
     private $sistemaOperacional = null;
+    private $statusProprietario = false;
+    private $nomeProprietario = null;
 
 
     // setters
@@ -43,6 +45,14 @@ class Celular
         $this->sistemaOperacional = $so;
     }
 
+    public function setNomeProprietario($nomeProprietario)
+    {
+        $this->nomeProprietario = $nomeProprietario;
+    }
+
+    public function setStatusNomeProprietario($statusNomeProprietario){
+        $this->statusProprietario = $statusNomeProprietario;
+    }
 
     // getters
     public function getCor()
@@ -73,6 +83,15 @@ class Celular
     public function getSO()
     {
         return $this->sistemaOperacional;
+    }
+
+    public function getNomeProprietario()
+    {
+        return $this->nomeProprietario;
+    }
+
+    public function getStatusProprietario(){
+        return $this->statusProprietario;
     }
 
     public function getInfo($celular){
@@ -137,6 +156,16 @@ class Celular
     {
         echo "Configurações";
         echo "\n1-Sobre";
+        echo "\n2-Definir nome do proprietário";
+        echo "\n:";
+    }
+
+    public function showOptionsConfigWithProprietario()
+    {
+        echo "Configurações";
+        echo "\n1-Sobre";
+        echo "\n2-Definir nome do proprietário";
+        echo "\n3-Ver nome do proprietário";
         echo "\n:";
     }
 }

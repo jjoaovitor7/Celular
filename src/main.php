@@ -107,14 +107,53 @@ if (strtok($ligarCelular, "\n") == "S") {
             }
         }
 
-        if ($showOptionsCond == 4){
+        if ($showOptionsCond == 4) {
             clearScreen();
-            $celular->showOptionsConfig();
-            $configOptions = fgets(STDIN);
-            if($configOptions == 1){
-                clearScreen();
-                $celular->getInfo($celular);
-                $celular->showOptionsHome();
+            if ($celular->getStatusProprietario() == false) {
+                $celular->showOptionsConfig();
+                $configOptions = fgets(STDIN);
+                if ($configOptions == 1) {
+                    clearScreen();
+                    $celular->getInfo($celular);
+                    $celular->showOptionsHome();
+                }
+            
+                if ($configOptions == 2) {
+                    clearScreen();
+                    echo "Nome do Proprietário: ";
+                    $nomeProprietario = fgets(STDIN);
+                    if ($celular->getStatusProprietario() == false && $nomeProprietario != null) {
+                        $celular->setNomeProprietario($nomeProprietario);
+                        $celular->setStatusNomeProprietario(true);
+                        $celular->showOptionsHome();
+                    }
+                }
+            } else {
+                $celular->showOptionsConfigWithProprietario();
+                $configOptions = fgets(STDIN);
+                if ($configOptions == 1) {
+                    clearScreen();
+                    $celular->getInfo($celular);
+                    $celular->showOptionsHome();
+                }
+            
+                if ($configOptions == 2) {
+                    clearScreen();
+                    echo "Nome do Proprietário: ";
+                    $nomeProprietario = fgets(STDIN);
+                    if ($celular->getStatusProprietario() == true && $nomeProprietario != null) {
+                        $celular->setNomeProprietario($nomeProprietario);
+                        $celular->setStatusNomeProprietario(true);
+                        $celular->showOptionsHome();
+                    }
+                }
+
+                if($configOptions == 3){
+                    clearScreen();
+                    echo "Nome do Proprietário: ";
+                    echo $celular->getNomeProprietario();
+                    $celular->showOptionsHome();
+                }
             }
         }
 
