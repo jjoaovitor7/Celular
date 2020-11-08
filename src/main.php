@@ -3,31 +3,10 @@ require_once(__DIR__ . '/Celular.php');
 require_once(__DIR__ . '/clearScreen.php');
 require_once(__DIR__ . '/Contato.php');
 require_once(__DIR__ . '/requests.php');
+require_once(__DIR__ . '/optionProprietario.php');
 
 $celular = new Celular();
 $contato = new Contato();
-
-function optionProprietario($celular, $status, $configOptions){
-    if ($configOptions == 1)
-    {
-        clearScreen();
-        $celular->getInfo($celular);
-        $celular->showOptionsHome();
-    }
-
-    if ($configOptions == 2)
-    {
-        clearScreen();
-        echo "Nome do Proprietário: ";
-        $nomeProprietario = fgets(STDIN);
-        if ($celular->getStatusProprietario() == $status && $nomeProprietario != null)
-        {
-            $celular->setNomeProprietario($nomeProprietario);
-            $celular->setStatusNomeProprietario(true);
-            $celular->showOptionsHome();
-        }
-    }
-}
 
 clearScreen();
 echo "---Cadastro de Celular\n";
@@ -61,7 +40,7 @@ if (strtok($ligarCelular, "\n") == "S")
             $celular->showOptionsHome();
         }
 
-        if ($showOptionsCond == 2)
+        else if ($showOptionsCond == 2)
         {
             clearScreen();
             $celular->showOptionsContatos();
@@ -124,7 +103,7 @@ if (strtok($ligarCelular, "\n") == "S")
             }
         }
 
-        if ($showOptionsCond == 3)
+        else if ($showOptionsCond == 3)
         {
             echo "Digite sua mensagem: ";
             $msg = fgets(STDIN);
@@ -141,7 +120,7 @@ if (strtok($ligarCelular, "\n") == "S")
             }
         }
 
-        if ($showOptionsCond == 4)
+        else if ($showOptionsCond == 4)
         {
             clearScreen();
             if ($celular->getStatusProprietario() == false)
@@ -164,12 +143,19 @@ if (strtok($ligarCelular, "\n") == "S")
             }
         }
 
-        if ($showOptionsCond == 5)
+        else if ($showOptionsCond == 5)
         {
             $celular->desligar();
             echo "\n";
             $isTrue = false;
             break;
+        }
+        else {
+            echo "Opção não encontrada.\n";
+            echo "Estamos te redirecionando para a Home.\n";
+            sleep(5);
+            clearScreen();
+            $celular->showOptionsHome();
         }
     }
 } else {
