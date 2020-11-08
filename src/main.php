@@ -24,23 +24,28 @@ $celular->getInfo($celular);
 
 echo "\nLigar o celular? <S/n>\n";
 $ligarCelular = fgets(STDIN);
-if (strtok($ligarCelular, "\n") == "S") {
+if (strtok($ligarCelular, "\n") == "S")
+{
     $celular->ligar();
     $celular->showOptionsHome();
 
     $isTrue = true;
-    while ($isTrue) {
+    while ($isTrue)
+    {
         $showOptionsCond = fgets(STDIN);
-        if ($showOptionsCond == 1) {
+        if ($showOptionsCond == 1)
+        {
             clearScreen();
             $celular->showOptionsHome();
         }
 
-        if($showOptionsCond == 2){
+        if ($showOptionsCond == 2)
+        {
             clearScreen();
             $celular->showOptionsContatos();
             $contatosOptions = fgets(STDIN);
-            if($contatosOptions == 1){
+            if ($contatosOptions == 1)
+            {
                 clearScreen();
                 echo "Nome do Contato: ";
                 $nomeContato = fgets(STDIN);
@@ -53,16 +58,19 @@ if (strtok($ligarCelular, "\n") == "S") {
                 $celular->showOptionsHome();
             }
             
-            if($contatosOptions == 2){
+            if ($contatosOptions == 2)
+            {
                 echo $contato->getContato();
                 echo "\n";
                 $celular->showOptionsHome();
             }
 
-            if($contatosOptions == 3){
+            if ($contatosOptions == 3)
+            {
                 echo "ID do Contato: ";
                 $idContato = fgets(STDIN);
-                if(array_key_exists(intval($idContato), $contato->getContatoArray())){
+                if (array_key_exists(intval($idContato), $contato->getContatoArray()))
+                {
                     echo "Contato Selecionado: ";
                     echo $contato->selectNomeContato(intval($idContato));
                     echo "\n";
@@ -77,10 +85,12 @@ if (strtok($ligarCelular, "\n") == "S") {
                 }
             }
 
-            if($contatosOptions == 4){
+            if ($contatosOptions == 4)
+            {
                 echo "ID do Contato: ";
                 $idContato = fgets(STDIN);
-                if(array_key_exists(intval($idContato), $contato->getContatoArray())){
+                if (array_key_exists(intval($idContato), $contato->getContatoArray()))
+                {
                     $contato->deletarContato(intval($idContato));
                     echo "Contato deletado!\n";
                     $celular->showOptionsHome();
@@ -92,12 +102,14 @@ if (strtok($ligarCelular, "\n") == "S") {
             }
         }
 
-        if($showOptionsCond == 3){
+        if ($showOptionsCond == 3)
+        {
             echo "Digite sua mensagem: ";
             $msg = fgets(STDIN);
             echo "Digite o ID do usuário para quem quer enviar: ";
             $idDestinatario = fgets(STDIN);
-            if(array_key_exists(intval($idDestinatario), $contato->getContatoArray())){
+            if (array_key_exists(intval($idDestinatario), $contato->getContatoArray()))
+            {
                 $contato->enviarMensagem(strtok($idDestinatario, "\n"), strtok($msg, "\n"));
                 $celular->showOptionsHome();
             }
@@ -107,22 +119,27 @@ if (strtok($ligarCelular, "\n") == "S") {
             }
         }
 
-        if ($showOptionsCond == 4) {
+        if ($showOptionsCond == 4)
+        {
             clearScreen();
-            if ($celular->getStatusProprietario() == false) {
+            if ($celular->getStatusProprietario() == false)
+            {
                 $celular->showOptionsConfig();
                 $configOptions = fgets(STDIN);
-                if ($configOptions == 1) {
+                if ($configOptions == 1)
+                {
                     clearScreen();
                     $celular->getInfo($celular);
                     $celular->showOptionsHome();
                 }
             
-                if ($configOptions == 2) {
+                if ($configOptions == 2)
+                {
                     clearScreen();
                     echo "Nome do Proprietário: ";
                     $nomeProprietario = fgets(STDIN);
-                    if ($celular->getStatusProprietario() == false && $nomeProprietario != null) {
+                    if ($celular->getStatusProprietario() == false && $nomeProprietario != null)
+                    {
                         $celular->setNomeProprietario($nomeProprietario);
                         $celular->setStatusNomeProprietario(true);
                         $celular->showOptionsHome();
@@ -131,24 +148,28 @@ if (strtok($ligarCelular, "\n") == "S") {
             } else {
                 $celular->showOptionsConfigWithProprietario();
                 $configOptions = fgets(STDIN);
-                if ($configOptions == 1) {
+                if ($configOptions == 1)
+                {
                     clearScreen();
                     $celular->getInfo($celular);
                     $celular->showOptionsHome();
                 }
             
-                if ($configOptions == 2) {
+                if ($configOptions == 2)
+                {
                     clearScreen();
                     echo "Nome do Proprietário: ";
                     $nomeProprietario = fgets(STDIN);
-                    if ($celular->getStatusProprietario() == true && $nomeProprietario != null) {
+                    if ($celular->getStatusProprietario() == true && $nomeProprietario != null)
+                    {
                         $celular->setNomeProprietario($nomeProprietario);
                         $celular->setStatusNomeProprietario(true);
                         $celular->showOptionsHome();
                     }
                 }
 
-                if($configOptions == 3){
+                if ($configOptions == 3)
+                {
                     clearScreen();
                     echo "Nome do Proprietário: ";
                     echo $celular->getNomeProprietario();
@@ -157,7 +178,8 @@ if (strtok($ligarCelular, "\n") == "S") {
             }
         }
 
-        if ($showOptionsCond == 5){
+        if ($showOptionsCond == 5)
+        {
             $celular->desligar();
             echo "\n";
             $isTrue = false;

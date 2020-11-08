@@ -54,6 +54,7 @@ class Celular
         $this->statusProprietario = $statusNomeProprietario;
     }
 
+
     // getters
     public function getCor()
     {
@@ -94,7 +95,8 @@ class Celular
         return $this->statusProprietario;
     }
 
-    public function getInfo($celular){
+    public function getInfo($celular)
+    {
         echo "\n|Cor: {$celular->getCor()}\n";
         echo "|Marca: {$celular->getMarca()}";
         echo "|Modelo: {$celular->getModelo()}";
