@@ -7,6 +7,28 @@ require_once(__DIR__ . '/requests.php');
 $celular = new Celular();
 $contato = new Contato();
 
+function optionProprietario($celular, $status, $configOptions){
+    if ($configOptions == 1)
+    {
+        clearScreen();
+        $celular->getInfo($celular);
+        $celular->showOptionsHome();
+    }
+
+    if ($configOptions == 2)
+    {
+        clearScreen();
+        echo "Nome do Proprietário: ";
+        $nomeProprietario = fgets(STDIN);
+        if ($celular->getStatusProprietario() == $status && $nomeProprietario != null)
+        {
+            $celular->setNomeProprietario($nomeProprietario);
+            $celular->setStatusNomeProprietario(true);
+            $celular->showOptionsHome();
+        }
+    }
+}
+
 clearScreen();
 echo "---Cadastro de Celular\n";
 requestCor($celular);
@@ -126,48 +148,11 @@ if (strtok($ligarCelular, "\n") == "S")
             {
                 $celular->showOptionsConfig();
                 $configOptions = fgets(STDIN);
-                if ($configOptions == 1)
-                {
-                    clearScreen();
-                    $celular->getInfo($celular);
-                    $celular->showOptionsHome();
-                }
-            
-                if ($configOptions == 2)
-                {
-                    clearScreen();
-                    echo "Nome do Proprietário: ";
-                    $nomeProprietario = fgets(STDIN);
-                    if ($celular->getStatusProprietario() == false && $nomeProprietario != null)
-                    {
-                        $celular->setNomeProprietario($nomeProprietario);
-                        $celular->setStatusNomeProprietario(true);
-                        $celular->showOptionsHome();
-                    }
-                }
+                optionProprietario($celular, false, $configOptions);
             } else {
                 $celular->showOptionsConfigWithProprietario();
                 $configOptions = fgets(STDIN);
-                if ($configOptions == 1)
-                {
-                    clearScreen();
-                    $celular->getInfo($celular);
-                    $celular->showOptionsHome();
-                }
-            
-                if ($configOptions == 2)
-                {
-                    clearScreen();
-                    echo "Nome do Proprietário: ";
-                    $nomeProprietario = fgets(STDIN);
-                    if ($celular->getStatusProprietario() == true && $nomeProprietario != null)
-                    {
-                        $celular->setNomeProprietario($nomeProprietario);
-                        $celular->setStatusNomeProprietario(true);
-                        $celular->showOptionsHome();
-                    }
-                }
-
+                optionProprietario($celular, true, $configOptions);
                 if ($configOptions == 3)
                 {
                     clearScreen();
@@ -175,6 +160,7 @@ if (strtok($ligarCelular, "\n") == "S")
                     echo $celular->getNomeProprietario();
                     $celular->showOptionsHome();
                 }
+
             }
         }
 
