@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/clearScreen.php');
+require_once('./src/scripts/clearScreen.php');
 
 class Celular
 {
@@ -103,6 +103,13 @@ class Celular
         echo "|Quantidade de Memória de Armazenamento: {$celular->getQtdeMemoriaArmazenamento()}\n";
         echo "|Quantidade de Memória RAM: {$celular->getQtdeMemoriaRAM()}\n";
         echo "|Sistema Operacional: {$celular->getSO()}";
+    }
+
+    public function infoCelularCadastrado()
+    {
+        echo " ------------------";
+        echo "\n|Celular cadastrado|";
+        echo "\n ------------------";
     }
 
     public function ligar()

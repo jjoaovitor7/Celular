@@ -1,29 +1,19 @@
 <?php
-require_once(__DIR__ . '/Celular.php');
-require_once(__DIR__ . '/clearScreen.php');
-require_once(__DIR__ . '/Contato.php');
-require_once(__DIR__ . '/requests.php');
-require_once(__DIR__ . '/optionProprietario.php');
-require_once(__DIR__ . '/ContatoFunctions.php');
-require_once(__DIR__ . '/enviarMensagem.php');
+require_once('./src/Celular.php');
+require_once('./src/Contato.php');
+require_once('./src/Option.php');
+require_once('./src/Request.php');
+
+require_once('./src/scripts/cadastrarCelular.php');
+require_once('./src/scripts/clearScreen.php');
 
 $celular = new Celular();
 $contato = new Contato();
+$option = new Option();
+$request = new Request();
 
 clearScreen();
-echo "---Cadastro de Celular\n";
-requestCor($celular);
-requestMarca($celular);
-requestModelo($celular);
-requestQuantidadeMemoriaArmazenamento($celular);
-requestQuantidadeMemoriaRAM($celular);
-requestSO($celular);
-clearScreen();
-
-echo " ------------------";
-echo "\n|Celular cadastrado|";
-echo "\n ------------------";
-$celular->getInfo($celular);
+cadastrarCelular($celular);
 
 echo "\nLigar o celular? <S/n>\n";
 $ligarCelular = fgets(STDIN);
@@ -55,7 +45,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
             if ($contatosOptions == 1)
             {
                 clearScreen();
-                optionAddContato($contato);
+                $option->addContact($contato);
                 $celular->showOptionsHome();
             }
             
@@ -68,12 +58,12 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
 
             else if ($contatosOptions == 3)
             {
-                optionSelectContato($celular, $contato);
+                $option->selectContact($celular, $contato);
             }
 
             else if ($contatosOptions == 4)
             {
-                optionDeleteContato($celular, $contato);
+                $option->deleteContact($celular, $contato);
             }
             else {
                 echo "Opção não encontrada.\n";
@@ -85,7 +75,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
         // Enviar mensagem
         else if ($showOptionsCond == 3)
         {
-            enviarMensagem($celular, $contato);
+            $option->sendMessage($celular, $contato);
         }
 
         else if ($showOptionsCond == 4)
@@ -102,7 +92,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
                 popen("firefox -url https://google.com", "r");
                 $celular->showOptionsHome();
             }
-            
+
             else if ($acessarInternet == 2)
             {
                 echo "Abrindo Chrome...\n";
@@ -124,7 +114,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
             {
                 $celular->showOptionsConfig();
                 $configOptions = fgets(STDIN);
-                optionProprietario($celular, false, $configOptions);
+                $option->configWithAboutAndWithoutOwnerDefined($celular, false, $configOptions);
 
                 if (intval($configOptions) <= 0 ||intval($configOptions) >= 3 || gettype(intval($configOptions)) != "integer"){
                     echo "Opção não encontrada.\n";
@@ -134,7 +124,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
                 $celular->showOptionsConfigWithProprietario();
                 $configOptions = fgets(STDIN);
         
-                optionProprietario($celular, true, $configOptions);
+                $option->configWithAboutAndWithoutOwnerDefined($celular, true, $configOptions);
                 if ($configOptions == 3)
                 {
                     clearScreen();
