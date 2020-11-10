@@ -3,23 +3,35 @@ class Request
 {
     public function requestCor($celular)
     {
-        echo "Cor: "
-    ."\n1-Preto"
-    ."\n2-Branco"
-    ."\n3-Dourado"
-    ."\n4-Outra"
-    ."\n:";
+        echo "Cor: ";
+        echo "\n1-Preto";
+        echo "\n2-Branco";
+        echo "\n3-Dourado";
+        echo "\n4-Outra";
+        echo "\n:";
+
         $corCelular = fgets(STDIN);
-        if ($corCelular == 1) {
-            $celular->setCor("Preto");
-        } elseif ($corCelular == 2) {
-            $celular->setCor("Branco");
-        } elseif ($corCelular == 3) {
-            $celular->setCor("Dourado");
-        } elseif ($corCelular == 4) {
-            $celular->setCor(fgets(STDIN));
-        } else {
-            $celular->setCor("Preto");
+        switch ($corCelular)
+        {
+            case 1:
+                $celular->setCor("Preto");
+            break;
+            
+            case 2:
+                $celular->setCor("Branco");
+            break;
+
+            case 3:
+                $celular->setCor("Dourado");
+            break;
+            
+            case 4:
+                $celular->setCor(fgets(STDIN));
+            break;
+
+            default:
+                $celular->setCor("Preto");
+            break;
         }
     }
 
@@ -37,45 +49,69 @@ class Request
 
     public function requestQuantidadeMemoriaArmazenamento($celular)
     {
-        echo "Quantidade de Memória de Armazenamento: "
-    ."\n1-16GB"
-    ."\n2-32GB"
-    ."\n3-64GB"
-    ."\n4-128GB"
-    ."\n5-256GB"
-    ."\n:";
+        echo "Quantidade de Memória de Armazenamento: ";
+        echo "\n1-16GB";
+        echo "\n2-32GB";
+        echo "\n3-64GB";
+        echo "\n4-128GB";
+        echo "\n5-256GB";
+        echo "\n:";
+
         $qtdeArmazenamento = fgets(STDIN);
-        if ($qtdeArmazenamento == 1) {
-            $celular->setQtdeMemoriaArmazenamento("16GB");
-        } elseif ($qtdeArmazenamento == 2) {
-            $celular->setQtdeMemoriaArmazenamento("32GB");
-        } elseif ($qtdeArmazenamento == 3) {
-            $celular->setQtdeMemoriaArmazenamento("64GB");
-        } elseif ($qtdeArmazenamento == 4) {
-            $celular->setQtdeMemoriaArmazenamento("128GB");
-        } elseif ($qtdeArmazenamento == 5) {
-            $celular->setQtdeMemoriaArmazenamento("256GB");
-        } else {
-            $celular->setQtdeMemoriaArmazenamento("16GB");
+        switch($qtdeArmazenamento)
+        {
+            case 1:
+                $celular->setQtdeMemoriaArmazenamento("16GB");
+            break;
+            
+            case 2:
+                $celular->setQtdeMemoriaArmazenamento("32GB");
+            break;
+            
+            case 3:
+                $celular->setQtdeMemoriaArmazenamento("64GB");
+            break;
+
+            case 4:
+                $celular->setQtdeMemoriaArmazenamento("128GB");
+            break;
+            
+            case 5:
+                $celular->setQtdeMemoriaArmazenamento("256GB");
+            break;
+
+            default:
+                $celular->setQtdeMemoriaArmazenamento("16GB");
+            break;
         }
     }
 
     public function requestQuantidadeMemoriaRAM($celular)
     {
-        echo "Quantidade de Memória RAM:"
-    ."\n1-2GB"
-    ."\n2-4GB"
-    ."\n3-8GB"
-    ."\n:";
+        echo "Quantidade de Memória RAM:";
+        echo "\n1-2GB";
+        echo "\n2-4GB";
+        echo "\n3-8GB";
+        echo "\n:";
+
         $qtdeRAM = fgets(STDIN);
-        if ($qtdeRAM == 1) {
-            $celular->setQtdeMemoriaRAM("2GB");
-        } elseif ($qtdeRAM == 2) {
-            $celular->setQtdeMemoriaRAM("4GB");
-        } elseif ($qtdeRAM == 3) {
-            $celular->setQtdeMemoriaRAM("8GB");
-        } else {
-            $celular->setQtdeMemoriaRAM("2GB");
+        switch($qtdeRAM)
+        {
+            case 1:
+                $celular->setQtdeMemoriaRAM("2GB");
+            break;
+            
+            case 2:
+                $celular->setQtdeMemoriaRAM("4GB");
+            break;
+
+            case 3:
+                $celular->setQtdeMemoriaRAM("8GB");
+            break;
+            
+            default:
+                $celular->setQtdeMemoriaRAM("2GB");
+            break;
         }
     }
 

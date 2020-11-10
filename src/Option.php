@@ -81,7 +81,7 @@ class Option
                 clearScreen();
                 $celular->getInfo($celular);
                 $celular->showOptionsHome();
-                break;
+            break;
 
             case 2:
                 clearScreen();
@@ -93,6 +93,7 @@ class Option
                    $celular->setStatusNomeProprietario(true);
                    $celular->showOptionsHome();
                 }
+            break;
         }
     }
 }
