@@ -139,8 +139,9 @@ class Celular
         echo "\n1-Home";
         echo "\n2-Contatos";
         echo "\n3-Enviar Mensagem";
-        echo "\n4-Configurações";
-        echo "\n5-Desligar";
+        echo "\n4-Acessar Internet";
+        echo "\n5-Configurações";
+        echo "\n6-Desligar";
         echo "\n:";
     }
 

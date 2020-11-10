@@ -88,9 +88,36 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
             enviarMensagem($celular, $contato);
         }
 
+        else if ($showOptionsCond == 4)
+        {
+            clearScreen();
+            echo "Navegadores";
+            echo "\n1-Firefox";
+            echo "\n2-Chrome";
+            echo "\n:";
+            $acessarInternet = fgets(STDIN);
+            if ($acessarInternet == 1)
+            {
+                echo "Abrindo Firefox...\n";
+                popen("firefox -url https://google.com", "r");
+                $celular->showOptionsHome();
+            }
+            
+            else if ($acessarInternet == 2)
+            {
+                echo "Abrindo Chrome...\n";
+                popen("google-chrome -url https://google.com", "r");
+                sleep(3);
+                $celular->showOptionsHome();
+            }
+
+            else {
+                echo "Navegador não encontrado.";
+            }
+        }
 
         // Configurações
-        else if ($showOptionsCond == 4)
+        else if ($showOptionsCond == 5)
         {
             clearScreen();
             if ($celular->getStatusProprietario() == false)
@@ -126,7 +153,7 @@ if (strtok($ligarCelular, "\n") == "S" || strtok($ligarCelular, "\n") == "s")
 
 
         // Desligar
-        else if ($showOptionsCond == 5)
+        else if ($showOptionsCond == 6)
         {
             $celular->desligar();
             echo "\n";
